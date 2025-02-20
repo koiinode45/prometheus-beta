@@ -1,5 +1,5 @@
 import pytest
-from src.anagram_checker import anagram_checker, _clean_word
+from src.anagram_checker import anagram_checker
 
 def test_valid_anagrams():
     """Test basic valid anagram scenarios"""
@@ -18,19 +18,6 @@ def test_case_insensitive():
     
 def test_whitespace_handling():
     """Test that whitespace does not affect anagram checking"""
-    # Detailed debugging
-    race_car_input = "race car"
-    care_race_input = "care race"
-    
-    print(f"Input 1: '{race_car_input}'")
-    print(f"Input 2: '{care_race_input}'")
-    
-    cleaned_1 = _clean_word(race_car_input)
-    cleaned_2 = _clean_word(care_race_input)
-    
-    print(f"Word1 cleaned: '{cleaned_1}'")
-    print(f"Word2 cleaned: '{cleaned_2}'")
-    
     assert anagram_checker("race car", "care race") == True
     assert anagram_checker("  race car  ", "care race") == True
     

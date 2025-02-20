@@ -18,6 +18,9 @@ def test_case_insensitive():
     
 def test_whitespace_handling():
     """Test that whitespace does not affect anagram checking"""
+    # Print debug information
+    print(f"Word1: '{anagram_checker._clean_word('race car')}'")
+    print(f"Word2: '{anagram_checker._clean_word('care race')}'")
     assert anagram_checker("race car", "care race") == True
     assert anagram_checker("  race car  ", "care race") == True
     

@@ -13,8 +13,8 @@ def anagram_checker(word1: str, word2: str) -> bool:
         bool: True if the words are anagrams, False otherwise
     """
     # Remove whitespace and convert to lowercase, keep only alphanumeric characters
-    word1 = ''.join(char.lower() for char in word1 if char.isalnum())
-    word2 = ''.join(char.lower() for char in word2 if char.isalnum())
+    word1 = ''.join(sorted(char.lower() for char in word1 if char.isalnum()))
+    word2 = ''.join(sorted(char.lower() for char in word2 if char.isalnum()))
     
     # Compare sorted characters
-    return sorted(word1) == sorted(word2)
+    return word1 == word2

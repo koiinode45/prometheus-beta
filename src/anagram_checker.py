@@ -1,16 +1,3 @@
-def _clean_word(word: str) -> str:
-    """
-    Clean a word by removing whitespace and converting to lowercase.
-    
-    Args:
-        word (str): Input word or phrase
-    
-    Returns:
-        str: Cleaned word with only alphanumeric characters, sorted
-    """
-    word = ''.join(char.lower() for char in word if char.isalnum())
-    return ''.join(sorted(word))
-
 def anagram_checker(word1: str, word2: str) -> bool:
     """
     Check if two words are anagrams of each other.
@@ -25,9 +12,9 @@ def anagram_checker(word1: str, word2: str) -> bool:
     Returns:
         bool: True if the words are anagrams, False otherwise
     """
-    # Clean and sort the words
-    cleaned_word1 = _clean_word(word1)
-    cleaned_word2 = _clean_word(word2)
+    # Remove non-alphanumeric characters and convert to lowercase
+    clean1 = ''.join(sorted(char.lower() for char in word1 if char.isalnum()))
+    clean2 = ''.join(sorted(char.lower() for char in word2 if char.isalnum()))
     
     # Compare cleaned words
-    return cleaned_word1 == cleaned_word2
+    return clean1 == clean2

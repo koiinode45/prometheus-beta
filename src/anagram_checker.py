@@ -12,24 +12,9 @@ def anagram_checker(word1: str, word2: str) -> bool:
     Returns:
         bool: True if the words are anagrams, False otherwise
     """
-    # Remove any whitespace and convert to lowercase to normalize input
-    word1 = ''.join(word1.lower().split())
-    word2 = ''.join(word2.lower().split())
+    # Remove whitespace and convert to lowercase
+    word1 = ''.join(sorted(char.lower() for char in word1 if char.isalnum()))
+    word2 = ''.join(sorted(char.lower() for char in word2 if char.isalnum()))
     
-    # Quick check: if lengths are different, they can't be anagrams
-    if len(word1) != len(word2):
-        return False
-    
-    # Create character frequency dictionaries 
-    char_count1 = {}
-    char_count2 = {}
-    
-    # Count character frequencies for both words
-    for char in word1:
-        char_count1[char] = char_count1.get(char, 0) + 1
-    
-    for char in word2:
-        char_count2[char] = char_count2.get(char, 0) + 1
-    
-    # Compare the character frequency dictionaries
-    return char_count1 == char_count2
+    # Check if sorted strings are identical
+    return word1 == word2

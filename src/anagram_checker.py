@@ -13,8 +13,8 @@ def anagram_checker(word1: str, word2: str) -> bool:
         bool: True if the words are anagrams, False otherwise
     """
     # Remove any whitespace and convert to lowercase to normalize input
-    word1 = word1.replace(" ", "").lower()
-    word2 = word2.replace(" ", "").lower()
+    word1 = ''.join(word1.lower().split())
+    word2 = ''.join(word2.lower().split())
     
     # Quick check: if lengths are different, they can't be anagrams
     if len(word1) != len(word2):

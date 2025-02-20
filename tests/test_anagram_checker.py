@@ -18,8 +18,10 @@ def test_case_insensitive():
     
 def test_whitespace_handling():
     """Test that whitespace does not affect anagram checking"""
-    print(f"Cleaned 'race car': {[''.join(sorted(char.lower() for char in 'race car' if char.isalnum()))]}")
-    print(f"Cleaned 'care race': {[''.join(sorted(char.lower() for char in 'care race' if char.isalnum()))]}")
+    # These look visually different 
+    assert ''.join(sorted(char.lower() for char in 'race car' if char.isalnum())) == 'aaccerr'
+    assert ''.join(sorted(char.lower() for char in 'care race' if char.isalnum())) == 'aacceerr'
+    
     assert anagram_checker("race car", "care race") == True
     assert anagram_checker("  race car  ", "care race") == True
     

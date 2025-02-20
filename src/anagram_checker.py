@@ -6,9 +6,10 @@ def _clean_word(word: str) -> str:
         word (str): Input word or phrase
     
     Returns:
-        str: Cleaned word with only alphanumeric characters
+        str: Cleaned word with only alphanumeric characters, sorted
     """
-    return ''.join(sorted(char.lower() for char in word if char.isalnum()))
+    word = ''.join(char.lower() for char in word if char.isalnum())
+    return ''.join(sorted(word))
 
 def anagram_checker(word1: str, word2: str) -> bool:
     """

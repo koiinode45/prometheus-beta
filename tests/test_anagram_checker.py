@@ -19,6 +19,7 @@ def test_case_insensitive():
 def test_whitespace_handling():
     """Test that whitespace does not affect anagram checking"""
     assert anagram_checker("race car", "care race") == True
+    assert anagram_checker("  race car  ", "care race") == True
     
 def test_empty_strings():
     """Test handling of empty strings"""

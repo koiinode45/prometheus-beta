@@ -24,17 +24,18 @@ def stable_marriage(men_preferences: List[List[str]], women_preferences: List[Li
         raise ValueError("Number of men and women must be equal")
     
     # Validate preferences have correct length
+    n = len(men_preferences)
     for i, prefs in enumerate(men_preferences):
-        if len(prefs) < len(men_preferences):
+        if len(prefs) < n:
             raise ValueError(f"Insufficient preferences for man {i}")
     
     for i, prefs in enumerate(women_preferences):
-        if len(prefs) < len(women_preferences):
+        if len(prefs) < n:
             raise ValueError(f"Insufficient preferences for woman {i}")
     
     # Convert names to sets to validate consistency
-    men_names = set(range(len(men_preferences)))
-    women_names = set(range(len(women_preferences)))
+    men_names = set(range(n))
+    women_names = set(range(n))
     
     # Initialize data structures
     matches = {}  # Current matching of women to men

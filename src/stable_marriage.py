@@ -25,6 +25,8 @@ def stable_marriage(men_preferences: List[List[str]], women_preferences: List[Li
     
     # Validate preferences have correct length
     n = len(men_preferences)
+    
+    # Detailed check to validate insufficient preferences
     for i, prefs in enumerate(men_preferences):
         if len(prefs) < n:
             raise ValueError(f"Insufficient preferences for man {i}")
@@ -47,6 +49,10 @@ def stable_marriage(men_preferences: List[List[str]], women_preferences: List[Li
     while men_free:
         # Pick a free man
         man = men_free.pop(0)
+        
+        # Ensure we're not running out of proposals
+        if men_proposal_index[man] >= len(men_preferences[man]):
+            raise ValueError(f"Insufficient preferences for man {man}")
         
         # Get his next preferred woman to propose to
         woman = men_preferences[man][men_proposal_index[man]]

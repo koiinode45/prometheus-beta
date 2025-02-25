@@ -55,10 +55,15 @@ def test_mismatched_input_length_raises_error():
 
 def test_insufficient_preferences_raises_error():
     """Test that insufficient preferences raise a ValueError."""
-    with pytest.raises(ValueError, match="Insufficient preferences for man"):
+    # Single item with fewer preferences than needed
+    with pytest.raises(ValueError, match="Insufficient preferences for man 0"):
         stable_marriage([[0]], [[1]])
-    with pytest.raises(ValueError, match="Insufficient preferences for woman"):
-        stable_marriage([[0, 1]], [[1]])
+    
+    # Multiple items, but one has insufficient preferences
+    prefs_men = [[0, 1], [1]]  # Second list is too short
+    prefs_women = [[0, 1], [1, 0]]
+    with pytest.raises(ValueError, match="Insufficient preferences for man 1"):
+        stable_marriage(prefs_men, prefs_women)
 
 def test_stable_marriage_large_scenario():
     """Test a larger stable marriage scenario."""

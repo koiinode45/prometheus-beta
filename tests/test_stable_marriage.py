@@ -55,8 +55,10 @@ def test_mismatched_input_length_raises_error():
 
 def test_insufficient_preferences_raises_error():
     """Test that insufficient preferences raise a ValueError."""
-    with pytest.raises(ValueError, match="Insufficient preferences"):
+    with pytest.raises(ValueError, match="Insufficient preferences for man"):
         stable_marriage([[0]], [[1]])
+    with pytest.raises(ValueError, match="Insufficient preferences for woman"):
+        stable_marriage([[0, 1]], [[1]])
 
 def test_stable_marriage_large_scenario():
     """Test a larger stable marriage scenario."""
